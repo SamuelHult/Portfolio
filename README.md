@@ -1,30 +1,33 @@
 # Samuel Hult – artisthemsida
 
-En responsiv, statisk artisthemsida på svenska. Den fungerar på GitHub Pages utan byggsteg.
+Responsiv, statisk artisthemsida på svenska. Webbplatsen publiceras från `main` via GitHub Pages utan byggsteg.
 
-## Innan publicering
+## Ändra webbplatsen
 
-Uppdatera `index.html` med:
+- Ändra sidans texter och metadata i `index.html`.
+- Lägg YouTube-klipp i karusellen i `script.js` genom att lägga till ett objekt med videons ID och titel i `youtubeClips`. ID:t finns efter `v=` i en YouTube-länk.
+- Lägg till bilder och bildtexter i `galleryImages` i `script.js` och placera bildfilerna i `assets/`.
+- Byt porträttet genom att ersätta `assets/samuel-hult-dragspel.jpg` och behålla samma filnamn, eller ändra bildsökvägen i `index.html`.
+- Uppdatera e-postadressen i bokningssektionen om kontaktadressen ändras.
 
-- Samuels YouTube-kanal och länkar till de låtar eller klipp som ska visas.
-- En fungerande bokningsadress eller annan kontaktväg i bokningssektionen.
-- Sidans `description` och Open Graph-texter om presentationen ändras.
-- En `og:image` med en egen, optimerad pressbild om en sådan finns.
+Karusellen visar YouTubes inbäddade spelare direkt på sidan; besökaren startar klippet med YouTubes egna kontroller. Videon strömmas från YouTube och laddas inte ner eller lagras lokalt.
 
-Sidan innehåller just nu tydligt markerade platshållare för låtar och bokningskontakt. Publicera inte innan kontaktväg och önskade musiklänkar har lagts till.
+## Publicera ändringar
 
-## Publicera via GitHub Pages
+Spara filerna, granska ändringarna och skicka dem till GitHub:
 
-1. Skapa ett GitHub-repository och lägg `index.html`, `styles.css` och `script.js` i repositoryts rot.
-2. Öppna repositoryts **Settings → Pages**.
-3. Under **Build and deployment**, välj **Deploy from a branch**, välj `main` och `/ (root)`, och spara.
-4. När GitHub Pages visar att publiceringen är klar får du en `github.io`-adress. Kontrollera sidan där och testa även mobilmenyn.
-5. För en egen domän: ange domänen i **Settings → Pages → Custom domain**. Lägg till den `CNAME`-fil som GitHub skapar i repositoryts rot.
-6. Lägg in DNS-posterna hos domänleverantören enligt GitHub Pages-anvisningarna. En `www`-underdomän brukar använda en CNAME-post till din `github.io`-adress; en rotdomän använder GitHubs A-poster. Följ alltid de aktuella värdena i GitHubs dokumentation.
-7. När DNS har hunnit uppdateras, aktivera **Enforce HTTPS** i Pages-inställningarna.
+```powershell
+git add index.html styles.css script.js README.md assets/
+git commit -m "Update artist website"
+git push
+```
 
-Inställningar och DNS-värden kan ändras. Följ GitHubs aktuella guide: <https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site>.
+GitHub Pages bygger om webbplatsen från `main` efter push. Den publicerade sidan finns på <https://samuelhult.github.io/Portfolio/>.
+
+## Egen domän
+
+Ange domänen under **Settings → Pages → Custom domain** och ställ in DNS-posterna hos domänleverantören enligt GitHubs aktuella dokumentation: <https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site>.
 
 ## Sökmotoroptimering
 
-Sidan har svensk språkdeklaration, sidtitel, beskrivning, Open Graph-metadata och strukturerade personuppgifter. Lägg till en egen domän och en sidbild när de finns, och länka till webbplatsen från artistprofiler. Google behöver hitta och indexera den publicerade sidan; sökresultat kan dröja och en viss placering kan inte garanteras.
+Sidan har svensk språkdeklaration, sidtitel, beskrivning, Open Graph-metadata och strukturerade personuppgifter. Google behöver hitta och indexera den publicerade sidan; sökresultat kan dröja och en viss placering kan inte garanteras.
